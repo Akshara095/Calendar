@@ -81,33 +81,36 @@
   font-size: 14px;
 }
 
-/* ====== Day Box Styling ====== */
 .day-box {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background: linear-gradient(to bottom, #e6f7ff, #f0f8ff);
-  border: 2px solid #dde7f0;
-  border-radius: 12px;
-  padding: 10px;
-  height: 160px;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+  background: linear-gradient(to bottom right, #ffffff, #f2f9ff);
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 6px 8px;
+  height: 120px; /* Reduced from 160px */
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;
   overflow-y: auto;
 }
 
+
 .day-box:hover {
-  transform: scale(1.01);
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
-  background: linear-gradient(145deg, #e0f3ff, #f0faff);
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 128, 255, 0.2);
+  background-color: #eef7ff;
 }
 
+/* 📍 Today Highlight */
 .day-box.today {
-  border: 2px solid #ff4d4f;
-  background: #ffecec;
+  border: 2px solid black;
+  background: #f7f7f7;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
+/* 🔵 Selected Day */
 .day-box.selected {
   border: 2px solid #1890ff;
   background: #e6f7ff;
@@ -115,20 +118,26 @@
 
 .day-box::before {
   content: "📅";
-  font-size: 50px;
+  font-size: 52px;
   position: absolute;
-  bottom: 4px;
-  right: 6px;
-  opacity: 0.05;
+  bottom: 6px;
+  right: 8px;
+  opacity: 0.15; 
+  color: #444;    
   pointer-events: none;
 }
 
-/* Top Date Number */
+
+/* 🔢 Date Number */
 .day-box > div:first-child {
   font-weight: bold;
   font-size: 16px;
   color: #333;
   margin-bottom: 4px;
+  background: #e0ecff;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 8px;
 }
 
 /* ====== Event Styling ====== */
@@ -181,6 +190,7 @@
   background-color: #c82333;
 }
 
+/* 📅 DatePicker Input */
 .react-datepicker-wrapper {
   display: inline-block;
 }
@@ -195,7 +205,7 @@
   text-align: center;
 }
 
-/* 🌟 Festival event style */
+/* 🎉 Festival Styling */
 .event.festival {
   background: linear-gradient(135deg, #ffdddd, #ffecec);
   color: #b30000;
@@ -217,6 +227,7 @@
   font-size: 14px;
 }
 
+/* 🟥 Entire Box Red for Festival Days */
 .day-box.festival-day {
   border: 2px solid crimson !important;
   background: #fff5f5;

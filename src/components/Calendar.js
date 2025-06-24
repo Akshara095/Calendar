@@ -192,49 +192,39 @@ const Calendar = () => {
     days.push(dayjs(new Date(date.year(), date.month(), i)));
   }
 
-  // ✅ Merge events.json + saved local events
+  // ✅ Load from localStorage or fallback to staticEvents
   useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem('calendarEvents') || '[]');
-    const merged = [...staticEvents, ...stored];
-
-    const unique = merged.filter(
-      (event, index, self) =>
-        index ===
-        self.findIndex(
-          (e) =>
-            e.title === event.title &&
-            e.date === event.date &&
-            e.startTime === event.startTime &&
-            e.endTime === event.endTime &&
-            e.duration === event.duration
-        )
-    );
-
-    setEvents(unique);
+    const stored = localStorage.getItem('calendarEvents');
+    if (stored) {
+      setEvents(JSON.parse(stored));
+    } else {
+      setEvents(staticEvents);
+      localStorage.setItem('calendarEvents', JSON.stringify(staticEvents));
+    }
   }, []);
 
   const getEvents = (d) =>
     events.filter((e) => dayjs(e.date).isSame(d, 'day'));
 
-  const getFestivalEvents = (d) =>
-    FESTIVALS.filter(f => d.month() === f.month && d.date() === f.day)
+  const getFestivalEvents = (d) => {
+    if (!d) return [];
+    return FESTIVALS.filter(f => d.month() === f.month && d.date() === f.day)
       .map(f => ({ title: f.title, type: 'festival' }));
+  };
 
   const handleAddOrUpdateEvent = (e) => {
     e.preventDefault();
-    let updated;
+    let updatedEvents = [...events];
+
     if (editingIndex !== null) {
-      updated = [...events];
-      updated[editingIndex] = formData;
+      updatedEvents[editingIndex] = formData;
       setEditingIndex(null);
     } else {
-      updated = [...events, formData];
+      updatedEvents.push(formData);
     }
 
-    // Only store user-created events (exclude hardcoded ones)
-    const userEvents = updated.filter(ev => !('type' in ev));
-    setEvents(updated);
-    localStorage.setItem('calendarEvents', JSON.stringify(userEvents));
+    setEvents(updatedEvents);
+    localStorage.setItem('calendarEvents', JSON.stringify(updatedEvents));
 
     setFormData({
       title: '',
@@ -253,9 +243,8 @@ const Calendar = () => {
   const handleDelete = (index) => {
     const updated = [...events];
     updated.splice(index, 1);
-    const userEvents = updated.filter(ev => !('type' in ev));
     setEvents(updated);
-    localStorage.setItem('calendarEvents', JSON.stringify(userEvents));
+    localStorage.setItem('calendarEvents', JSON.stringify(updated));
   };
 
   const getEventIndex = (event) =>
@@ -270,6 +259,7 @@ const Calendar = () => {
 
   return (
     <div className="calendar-container colorful">
+      {/* 🔁 Header with month/year picker */}
       <div className="calendar-header">
         <button onClick={() => setDate(date.subtract(1, 'month'))}>Prev</button>
 
@@ -285,8 +275,8 @@ const Calendar = () => {
             }}
             dateFormat="MMMM yyyy"
             showMonthYearPicker
-            showPopperArrow={false}
             className="month-picker"
+            showPopperArrow={false}
             placeholderText="Select Month & Year"
           />
         )}
@@ -294,6 +284,7 @@ const Calendar = () => {
         <button onClick={() => setDate(date.add(1, 'month'))}>Next</button>
       </div>
 
+      {/* 📝 Event Form */}
       <form className="event-form" onSubmit={handleAddOrUpdateEvent}>
         <input type="text" placeholder="Title" value={formData.title} required
           onChange={(e) => setFormData({ ...formData, title: e.target.value })} />
@@ -308,6 +299,7 @@ const Calendar = () => {
         <button type="submit">{editingIndex !== null ? 'Update' : 'Add'} Event</button>
       </form>
 
+      {/* 📅 Calendar Grid */}
       <div className="calendar-grid">
         {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d) => (
           <div key={d} className="day-name">{d}</div>
@@ -316,7 +308,7 @@ const Calendar = () => {
         {days.map((d, idx) => (
           <div
             key={idx}
-            className={`day-box ${d && d.isSame(today, 'day') ? 'today' : ''} ${selectedDate && d && d.isSame(selectedDate, 'day') ? 'selected' : ''}`}
+            className={`day-box ${getFestivalEvents(d).length ? 'festival-day' : ''} ${d && d.isSame(today, 'day') ? 'today' : ''} ${selectedDate && d && d.isSame(selectedDate, 'day') ? 'selected' : ''}`}
             onClick={() => d && setSelectedDate(d)}
           >
             {d && (
