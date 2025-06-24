@@ -265,3 +265,12 @@
   margin-bottom: 6px;
   color: #333;
 }
+
+/* 🔒 Edit button for past events */
+.event-buttons .disabled-edit-btn {
+  background-color: #d6d6d6 !important;
+  color: #888 !important;
+  cursor: not-allowed;
+  border: none;
+  font-style: italic;
+}
