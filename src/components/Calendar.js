@@ -148,7 +148,7 @@ const Calendar = () => {
 
 export default Calendar;
 */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import dayjs from 'dayjs';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -181,6 +181,7 @@ const Calendar = () => {
     duration: ''
   });
   const [editingIndex, setEditingIndex] = useState(null);
+  const formRef = useRef(null); // ✅ ref to scroll to form
 
   const today = dayjs();
   const startDay = date.startOf('month').day();
@@ -194,13 +195,23 @@ const Calendar = () => {
 
   // ✅ Load from localStorage or fallback to staticEvents
   useEffect(() => {
-    const stored = localStorage.getItem('calendarEvents');
-    if (stored) {
-      setEvents(JSON.parse(stored));
-    } else {
-      setEvents(staticEvents);
+    const saved = localStorage.getItem('calendarEvents');
+    let loadedEvents = [];
+
+    if (saved) {
+      try {
+        loadedEvents = JSON.parse(saved);
+      } catch (err) {
+        console.error("Invalid localStorage data:", err);
+      }
+    }
+
+    if (!loadedEvents || loadedEvents.length === 0) {
+      loadedEvents = staticEvents;
       localStorage.setItem('calendarEvents', JSON.stringify(staticEvents));
     }
+
+    setEvents(loadedEvents);
   }, []);
 
   const getEvents = (d) =>
@@ -236,9 +247,13 @@ const Calendar = () => {
   };
 
   const handleEdit = (event, index) => {
-    setFormData(event);
-    setEditingIndex(index);
-  };
+  setFormData(event);
+  setEditingIndex(index);
+
+  // ✅ Scroll to form correctly
+  formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
 
   const handleDelete = (index) => {
     const updated = [...events];
@@ -259,33 +274,28 @@ const Calendar = () => {
 
   return (
     <div className="calendar-container colorful">
-      {/* 🔁 Header with month/year picker */}
+      {/* 📅 Header */}
       <div className="calendar-header">
         <button onClick={() => setDate(date.subtract(1, 'month'))}>Prev</button>
-
         {date.isValid() && (
           <DatePicker
             selected={date.toDate()}
             onChange={(selectedDate) => {
-              if (selectedDate) {
-                setDate(dayjs(selectedDate));
-              } else {
-                setDate(dayjs());
-              }
+              if (selectedDate) setDate(dayjs(selectedDate));
+              else setDate(dayjs());
             }}
             dateFormat="MMMM yyyy"
             showMonthYearPicker
-            className="month-picker"
             showPopperArrow={false}
+            className="month-picker"
             placeholderText="Select Month & Year"
           />
         )}
-
         <button onClick={() => setDate(date.add(1, 'month'))}>Next</button>
       </div>
 
-      {/* 📝 Event Form */}
-      <form className="event-form" onSubmit={handleAddOrUpdateEvent}>
+      {/* 📝 Add/Edit Event Form */}
+      <form ref={formRef} className="event-form" onSubmit={handleAddOrUpdateEvent}>
         <input type="text" placeholder="Title" value={formData.title} required
           onChange={(e) => setFormData({ ...formData, title: e.target.value })} />
         <input type="date" value={formData.date} required
@@ -299,7 +309,7 @@ const Calendar = () => {
         <button type="submit">{editingIndex !== null ? 'Update' : 'Add'} Event</button>
       </form>
 
-      {/* 📅 Calendar Grid */}
+      {/* 🗓️ Calendar Grid */}
       <div className="calendar-grid">
         {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d) => (
           <div key={d} className="day-name">{d}</div>
