@@ -1,0 +1,74 @@
+[
+  { "title": "Doctor Visit", "date": "2025-01-05", "startTime": "10:00", "endTime": "10:30", "duration": "30m" },
+  { "title": "Project Kickoff", "date": "2025-01-10", "startTime": "09:00", "endTime": "10:00", "duration": "1h" },
+  { "title": "Parent-Teacher Meeting", "date": "2025-01-18", "startTime": "11:00", "endTime": "12:30", "duration": "1.5h" },
+  { "title": "Mock Interview", "date": "2025-01-21", "startTime": "16:00", "endTime": "17:00", "duration": "1h" },
+  { "title": "Blood Donation Camp", "date": "2025-01-28", "startTime": "09:00", "endTime": "13:00", "duration": "4h" },
+
+  { "title": "Library Slot", "date": "2025-02-03", "startTime": "14:00", "endTime": "15:00", "duration": "1h" },
+  { "title": "Team Lunch", "date": "2025-02-06", "startTime": "13:00", "endTime": "14:30", "duration": "1.5h" },
+  { "title": "Career Guidance", "date": "2025-02-12", "startTime": "10:30", "endTime": "11:30", "duration": "1h" },
+  { "title": "Lab Practical", "date": "2025-02-19", "startTime": "09:00", "endTime": "12:00", "duration": "3h" },
+  { "title": "Resume Review", "date": "2025-02-25", "startTime": "15:00", "endTime": "16:00", "duration": "1h" },
+
+  
+  { "title": "Mock Exam - Math", "date": "2025-03-02", "startTime": "09:00", "endTime": "11:00", "duration": "2h" },
+  { "title": "Dance Practice", "date": "2025-03-07", "startTime": "17:00", "endTime": "18:30", "duration": "1.5h" },
+  { "title": "Mini Project Review", "date": "2025-03-15", "startTime": "10:00", "endTime": "11:00", "duration": "1h" },
+  { "title": "Workshop: Python", "date": "2025-03-20", "startTime": "14:00", "endTime": "17:00", "duration": "3h" },
+  { "title": "Assignment Deadline", "date": "2025-03-28", "startTime": "23:00", "endTime": "23:59", "duration": "1h" },
+
+  { "title": "Webinar: AI", "date": "2025-04-03", "startTime": "10:00", "endTime": "11:30", "duration": "1.5h" },
+  { "title": "Eye Checkup", "date": "2025-04-06", "startTime": "09:30", "endTime": "10:00", "duration": "30m" },
+  { "title": "Resume Upload", "date": "2025-04-11", "startTime": "14:00", "endTime": "14:15", "duration": "15m" },
+  { "title": "Coding Contest", "date": "2025-04-19", "startTime": "15:00", "endTime": "17:00", "duration": "2h" },
+  { "title": "Doctor Appointment", "date": "2025-04-24", "startTime": "11:00", "endTime": "11:45", "duration": "45m" },
+
+  { "title": "Internship Begins", "date": "2025-05-01", "startTime": "09:00", "endTime": "17:00", "duration": "8h" },
+  { "title": "System Demo", "date": "2025-05-05", "startTime": "12:00", "endTime": "13:00", "duration": "1h" },
+  { "title": "Resume Review", "date": "2025-05-10", "startTime": "10:00", "endTime": "11:00", "duration": "1h" },
+  { "title": "Job Interview", "date": "2025-05-18", "startTime": "09:00", "endTime": "10:00", "duration": "1h" },
+  { "title": "Group Project Review", "date": "2025-05-25", "startTime": "15:00", "endTime": "16:30", "duration": "1.5h" },
+
+  { "title": "Course Enrollment", "date": "2025-06-04", "startTime": "11:00", "endTime": "12:00", "duration": "1h" },
+  { "title": "Hackathon Day 1", "date": "2025-06-08", "startTime": "08:00", "endTime": "20:00", "duration": "12h" },
+  { "title": "Project Planning", "date": "2025-06-14", "startTime": "10:00", "endTime": "12:00", "duration": "2h" },
+  { "title": "Poster Submission", "date": "2025-06-20", "startTime": "23:59", "endTime": "23:59", "duration": "Deadline" },
+  { "title": "Vaccination Slot", "date": "2025-06-29", "startTime": "09:30", "endTime": "10:00", "duration": "30m" },
+
+  { "title": "Orientation Day", "date": "2025-07-01", "startTime": "09:00", "endTime": "11:00", "duration": "2h" },
+  { "title": "Assignment Submission", "date": "2025-07-06", "startTime": "17:00", "endTime": "17:30", "duration": "30m" },
+  { "title": "Team Review", "date": "2025-07-13", "startTime": "15:00", "endTime": "16:00", "duration": "1h" },
+  { "title": "Monthly Checkup", "date": "2025-07-21", "startTime": "10:00", "endTime": "10:30", "duration": "30m" },
+  { "title": "Placement Training", "date": "2025-07-28", "startTime": "13:00", "endTime": "17:00", "duration": "4h" },
+
+  { "title": "Sports Day", "date": "2025-08-03", "startTime": "09:00", "endTime": "14:00", "duration": "5h" },
+  { "title": "Leadership Talk", "date": "2025-08-09", "startTime": "11:00", "endTime": "12:00", "duration": "1h" },
+  { "title": "Resume Finalization", "date": "2025-08-16", "startTime": "10:00", "endTime": "10:30", "duration": "30m" },
+  { "title": "Parent Call", "date": "2025-08-22", "startTime": "18:00", "endTime": "18:30", "duration": "30m" },
+  { "title": "PTM Reminder", "date": "2025-08-29", "startTime": "09:00", "endTime": "10:00", "duration": "1h" },
+
+  { "title": "Teacher's Day Celebration", "date": "2025-09-05", "startTime": "10:00", "endTime": "12:00", "duration": "2h" },
+  { "title": "Mock Interview 2", "date": "2025-09-10", "startTime": "16:00", "endTime": "17:00", "duration": "1h" },
+  { "title": "Quiz Round", "date": "2025-09-17", "startTime": "11:00", "endTime": "12:00", "duration": "1h" },
+  { "title": "Project Submission", "date": "2025-09-23", "startTime": "17:00", "endTime": "18:00", "duration": "1h" },
+  { "title": "Alumni Meet", "date": "2025-09-30", "startTime": "14:00", "endTime": "16:00", "duration": "2h" },
+
+  { "title": "Exam Begins", "date": "2025-10-01", "startTime": "09:00", "endTime": "12:00", "duration": "3h" },
+  { "title": "Model Exam - CS", "date": "2025-10-08", "startTime": "10:00", "endTime": "13:00", "duration": "3h" },
+  { "title": "Document Upload", "date": "2025-10-15", "startTime": "11:00", "endTime": "11:30", "duration": "30m" },
+  { "title": "Festival Preparation", "date": "2025-10-21", "startTime": "16:00", "endTime": "18:00", "duration": "2h" },
+  { "title": "Semester Break Starts", "date": "2025-10-28", "startTime": "00:00", "endTime": "23:59", "duration": "All Day" },
+
+  { "title": "Deepavali Workshop", "date": "2025-11-02", "startTime": "10:00", "endTime": "11:30", "duration": "1.5h" },
+  { "title": "Industrial Visit", "date": "2025-11-07", "startTime": "08:00", "endTime": "18:00", "duration": "10h" },
+  { "title": "Report Submission", "date": "2025-11-13", "startTime": "15:00", "endTime": "16:00", "duration": "1h" },
+  { "title": "Sports Review", "date": "2025-11-19", "startTime": "12:00", "endTime": "13:00", "duration": "1h" },
+  { "title": "Cultural Practice", "date": "2025-11-25", "startTime": "17:00", "endTime": "18:00", "duration": "1h" },
+
+  { "title": "Christmas Tree Setup", "date": "2025-12-03", "startTime": "14:00", "endTime": "16:00", "duration": "2h" },
+  { "title": "Reunion Planning", "date": "2025-12-09", "startTime": "18:00", "endTime": "19:00", "duration": "1h" },
+  { "title": "Final Exam - Theory", "date": "2025-12-15", "startTime": "09:00", "endTime": "12:00", "duration": "3h" },
+  { "title": "Last Lab Session", "date": "2025-12-20", "startTime": "10:00", "endTime": "12:00", "duration": "2h" },
+  { "title": "Year-End Party", "date": "2025-12-31", "startTime": "20:00", "endTime": "23:59", "duration": "4h" }
+]

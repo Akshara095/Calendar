@@ -1,0 +1,224 @@
+/* ====== Calendar Container ====== */
+.calendar-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #f0f8ff, #e6f7ff);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ====== Header ====== */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.calendar-header h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.calendar-header button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.calendar-header button:hover {
+  background-color: #0056b3;
+}
+
+/* ====== Event Form ====== */
+.event-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.event-form input,
+.event-form button {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.event-form button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+.event-form button:hover {
+  background-color: #218838;
+}
+
+/* ====== Calendar Grid ====== */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.day-name {
+  text-align: center;
+  font-weight: bold;
+  padding: 6px 0;
+  background-color: #d9edf7;
+  color: #31708f;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* ====== Day Box Styling ====== */
+.day-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: linear-gradient(to bottom, #e6f7ff, #f0f8ff);
+  border: 2px solid #dde7f0;
+  border-radius: 12px;
+  padding: 10px;
+  height: 160px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow-y: auto;
+}
+
+.day-box:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+  background: linear-gradient(145deg, #e0f3ff, #f0faff);
+}
+
+.day-box.today {
+  border: 2px solid #ff4d4f;
+  background: #ffecec;
+}
+
+.day-box.selected {
+  border: 2px solid #1890ff;
+  background: #e6f7ff;
+}
+
+.day-box::before {
+  content: "📅";
+  font-size: 50px;
+  position: absolute;
+  bottom: 4px;
+  right: 6px;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+/* Top Date Number */
+.day-box > div:first-child {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+/* ====== Event Styling ====== */
+.event {
+  background-color: #f2ffe6;
+  border-left: 4px solid #28a745;
+  border-radius: 6px;
+  padding: 6px;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #2e4d28;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+}
+
+.event strong {
+  color: #155724;
+}
+
+/* ====== Edit/Delete Buttons ====== */
+.event-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.event-buttons button {
+  background-color: #ffc107;
+  border: none;
+  padding: 3px 6px;
+  font-size: 11px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #333;
+}
+
+.event-buttons button:hover {
+  background-color: #e0a800;
+}
+
+.event-buttons button:last-child {
+  background-color: #dc3545;
+  color: white;
+}
+
+.event-buttons button:last-child:hover {
+  background-color: #c82333;
+}
+
+.react-datepicker-wrapper {
+  display: inline-block;
+}
+
+.month-picker {
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  background: transparent;
+  color: #007bff;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* 🌟 Festival event style */
+.event.festival {
+  background: linear-gradient(135deg, #ffdddd, #ffecec);
+  color: #b30000;
+  font-weight: bold;
+  padding: 6px 8px;
+  margin-top: 6px;
+  border-radius: 8px;
+  border-left: 5px solid crimson;
+  box-shadow: 0 2px 6px rgba(255, 0, 0, 0.2);
+  position: relative;
+  font-size: 13px;
+}
+
+.event.festival::before {
+  content: "🎉";
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  font-size: 14px;
+}
+
+.day-box.festival-day {
+  border: 2px solid crimson !important;
+  background: #fff5f5;
+  box-shadow: 0 0 10px rgba(220, 20, 60, 0.2);
+}
