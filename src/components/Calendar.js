@@ -194,25 +194,23 @@ const Calendar = () => {
   }
 
   // ✅ Load from localStorage or fallback to staticEvents
-  useEffect(() => {
-    const saved = localStorage.getItem('calendarEvents');
-    let loadedEvents = [];
+useEffect(() => {
+  const saved = localStorage.getItem('calendarEvents');
 
-    if (saved) {
-      try {
-        loadedEvents = JSON.parse(saved);
-      } catch (err) {
-        console.error("Invalid localStorage data:", err);
-      }
-    }
-
-    if (!loadedEvents || loadedEvents.length === 0) {
-      loadedEvents = staticEvents;
+  if (saved) {
+    try {
+      setEvents(JSON.parse(saved));
+    } catch (err) {
+      console.error("Invalid localStorage data. Resetting...");
+      setEvents(staticEvents);
       localStorage.setItem('calendarEvents', JSON.stringify(staticEvents));
     }
+  } else {
+    setEvents(staticEvents);
+    localStorage.setItem('calendarEvents', JSON.stringify(staticEvents));
+  }
+}, []);
 
-    setEvents(loadedEvents);
-  }, []);
 
   const getEvents = (d) =>
     events.filter((e) => dayjs(e.date).isSame(d, 'day'));
